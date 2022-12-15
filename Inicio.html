@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reinvent Sistemas</title>
+    <link rel="stylesheet" href="./CSS/style.css">
+    <script src="https://kit.fontawesome.com/96ec16837b.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <script>
+        // <![CDATA[  <-- For SVG support
+        if ('WebSocket' in window) {
+            (function () {
+                function refreshCSS() {
+                    var sheets = [].slice.call(document.getElementsByTagName("link"));
+                    var head = document.getElementsByTagName("head")[0];
+                    for (var i = 0; i < sheets.length; ++i) {
+                        var elem = sheets[i];
+                        var parent = elem.parentElement || head;
+                        parent.removeChild(elem);
+                        var rel = elem.rel;
+                        if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+                            var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+                            elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+                        }
+                        parent.appendChild(elem);
+                    }
+                }
+                var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+                var address = protocol + window.location.host + window.location.pathname + '/ws';
+                var socket = new WebSocket(address);
+                socket.onmessage = function (msg) {
+                    if (msg.data == 'reload') window.location.reload();
+                    else if (msg.data == 'refreshcss') refreshCSS();
+                };
+                if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+                    console.log('Live reload enabled.');
+                    sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+                }
+            })();
+        }
+        else {
+            console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+        }
+        // ]]>
+    </script>
+    <div class="logo-site"><a href="Inicio.html" class="router-link-active" tabindex="-1"><img alt="Reinvent Logo"
+                src="./IMG/reinvent_site.png" class="img-ri-logo"></a>
+    </div>
+    <header class="intro-header">
+
+        <div class="nav">
+            <nav>
+                <ul>
+                    <li class="nav-link">
+                        <a class="nav-link" href="Inicio.html">Inicio</a>
+                    </li>
+                    <li>
+                        <span class="menu-trigger"> <a class="nav-link" href="Gerencial.html">Gerencial</a></span>
+                    </li>
+                    <li>
+                        <a class="nav-link" href="#">Financeiro</a>
+                    </li>
+                    <li>
+                        <a calss="nav-link" href="#">Estoque</a>
+                    </li>
+                    <li>
+                        <a calss="nav-link" href="#">Pessoa</a>
+                    </li>
+                    <li>
+                        <a calss="nav-link" href="#">Quem somos</a>
+                    </li>
+                    <li>
+                        <a calss="nav-link" href="#">Projetos</a>
+                    </li>
+                    <li>
+                        <a calss="nav-link" href="#">Produtos</a>
+                    </li>
+
+                </ul>
+            </nav>
+        </div>
+        <div class="lema">
+            <h1>MANUAL DE USABILIDADE SISTEMA REINVENT</h1>
+            <h1>
+                A perseverança é o caminho para o SUCESSO.
+            </h1>
+            <div class="logo">
+                <img src="./IMG/imagem_app-removebg-preview.png">
+            </div>
+        </div>
+        <hr>
+        <div class="container">
+            <div class="container-menu">
+                <div class="card-menu border text-center">
+                    <i class="fa-sharp fa-solid fa-cash-register"></i>
+                    <a href="Gerencial.html" tabindex="-1">
+                        <span class="sidebar-normal">Gerencial</span>
+                    </a>
+
+                </div>
+                <div class="card-menu border text-center"><i class="fa-sharp fa-solid fa-hand-holding-dollar"></i><a
+                        href="Inicio.html#">Financeiro</a>
+                </div>
+
+                <div class="card-menu border text-center">
+                    <i class="fa-solid fa-cubes"></i>
+                    <a href="Inicio.html#">Estoque</a>
+
+                </div>
+
+                <div class="card-menu border text-center">
+                    <i class="fa-solid fa-users"></i>
+                    <a href="#">Pessoa</a>
+                </div>
+                <div class="card-menu border text-center"></div>
+                <div class="card-menu border text-center"></div>
+            </div>
+        </div>
+        </div>
+        <hr>
+    </header>
+</body>
+
+</html>
